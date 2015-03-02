@@ -11,4 +11,26 @@ class EditorsController < ApplicationController
         redirect_to '/login'
       end
     end
+
+    def new
+      if session[:editor_id] == 1
+        @editor = Editor.new
+      else
+        redirect_to '/login'
+      end
+    end
+
+    def create
+      if session[:editor_id] == 1
+        @editor = Editor.create(editor_params)
+        redirect_to 'editor'
+      else
+        redirect_to '/login'
+      end
+    end
+
+    private
+      def editor_params
+        params.require(:editor).permit(:name, :location, :password, :username)
+      end
 end
