@@ -13,7 +13,6 @@ class GroupsController < ApplicationController
     @articles = []
     @group = Group.create(group_params)
     params[:article].each do |article|
-      binding.pry
       if article[1][:id] == "1"
         newArticle = article[0].to_i
         @articles.push(newArticle)
