@@ -1,0 +1,23 @@
+<%= form_for @group do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+   </br >
+   <%= f.label :content %>
+ <%= f.text_area :content %>
+ </br >
+ <%= f.label :topic %>
+ <%= f.text_field :topic %>
+ </br >
+ <%= f.hidden_field :editor_id, :value => session[:editor_id] %>
+
+  <% @articles.each do |article| %>
+    <% currentArticle = Article.find_by(id: article) %>
+    <a href="<%= currentArticle.url %>"><%= currentArticle.title %></a>
+      <%= fields_for 'article[]' , article do |article_fields| %>
+      <%= article_fields.check_box :id %>
+      <% end %>
+    </div>
+  </br>
+  <% end %>
+  <%= f.submit "ADD GROUP"%>
+<% end %>

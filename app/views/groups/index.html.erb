@@ -1,0 +1,15 @@
+<% if @groups.empty? %>
+  <h1>no groups</h1>
+<% else %>
+  <% @groups.each do |group| %>
+  <div>
+    <div><%= group.title %></div>
+    <% group.articles.each do |article| %>
+      <% currentArticle = Article.find_by(id: article) %>
+      <a href="<%= currentArticle.url %>"><%= currentArticle.title %></a>
+    </br>
+    <% end %>
+  </div>
+</br>
+  <% end %>
+<% end %>
