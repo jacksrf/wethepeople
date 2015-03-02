@@ -12,7 +12,6 @@ class GroupsController < ApplicationController
   def create
     @articles = []
     @group = Group.create(group_params)
-    binding.pry
     params[:article].each do |article|
       binding.pry
       if article[1][:id] == "1"
@@ -20,7 +19,6 @@ class GroupsController < ApplicationController
         @articles.push(newArticle)
       end
     end
-    binding.pry
     @group.articles = @articles
     @group.save
     redirect_to '/'
