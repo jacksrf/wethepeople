@@ -10,7 +10,7 @@ class SessionController < ApplicationController
             @message = false
             session[:editor_id] = editor.id
             session[:username] = params[:username]
-            binding.pry
+            
             redirect_to '/editor'
         else
             @error = true
