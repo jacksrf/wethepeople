@@ -8,6 +8,11 @@
         <li><%= link_to 'HOME', editor_path(session[:editor_id]) %></li>
         <li><%= link_to 'NEW GROUP', new_editor_group_path(session[:editor_id]) %></li>
         <li><%= link_to 'ADD ARTICLE', new_editor_article_path(session[:editor_id]) %></li>
+        <li><form method="POST" action="/session">
+            <input name="authenticity_token" value="<%= form_authenticity_token() %>" type="hidden">
+            <input name="_method" value="DELETE" type="hidden">
+            <button>LOGOUT</button>
+          </form></li>
     </ul>
 </div>
 
